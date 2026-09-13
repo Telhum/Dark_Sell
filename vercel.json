@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/frameincrivel/index.html"
+    },
+    {
+      "source": "/frameincrivel",
+      "destination": "/frameincrivel/index.html"
+    }
+  ]
+}
