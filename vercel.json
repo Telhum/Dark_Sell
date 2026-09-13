@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "cleanUrls": true,
   "rewrites": [
     {
       "source": "/",
@@ -8,6 +9,14 @@
     {
       "source": "/frameincrivel",
       "destination": "/frameincrivel/index.html"
+    },
+    {
+      "source": "/assets/(.*)",
+      "destination": "/frameincrivel/assets/$1"
+    },
+    {
+      "source": "/frameincrivel/assets/(.*)",
+      "destination": "/frameincrivel/assets/$1"
     }
   ]
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Play de Bolso | Seu Console Portátil no Celular 🎮</title>
+    <title>Frame Incrível | Seu Console Portátil no Celular 🎮</title>
     
     <!-- Meta Tags SEO & Otimização CRO -->
     <meta name="description" content="Jogue GTA V, Forza Horizon e centenas de jogos de Xbox Cloud direto no seu celular por apenas R$ 19,90. Entrega imediata no PIX.">
@@ -12,20 +12,590 @@
     
     <!-- Open Graph / Redes Sociais (WhatsApp, Instagram, TikTok) -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Play de Bolso 🎮 Xbox Game Pass Cloud por R$ 19,90">
+    <meta property="og:title" content="Frame Incrível 🎮 Xbox Game Pass Cloud por R$ 19,90">
     <meta property="og:description" content="Jogue jogos de console direto no celular sem fila e sem baixar nada. Garanta seu acesso!">
     <meta property="og:image" content="assets/logo.png">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/logo.png">
     
-    <!-- Google Fonts (Inter + Outfit) com display=swap para carregamento em milissegundos -->
+    <!-- Google Fonts (Outfit + Plus Jakarta Sans) para carregamento rápido -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Folha de Estilos Otimizada -->
-    <link rel="stylesheet" href="style.css">
+    <!-- CSS Embutido Limpo para Renderização Instantânea (< 50ms) e 100% à Prova de Falhas no Vercel -->
+    <style>
+        /* Design Tokens */
+        :root {
+            --bg-dark: #0d0f17;
+            --bg-card: rgba(20, 25, 41, 0.75);
+            --bg-card-hover: rgba(26, 33, 56, 0.85);
+            --border-card: rgba(0, 240, 255, 0.18);
+            --border-card-hover: rgba(0, 240, 255, 0.45);
+            
+            /* Neons & Gradientes Gamers */
+            --neon-cyan: #00f0ff;
+            --neon-green: #00ff88;
+            --neon-purple: #9d4edd;
+            --neon-blue: #3a86ff;
+            --neon-gold: #ffbe0b;
+
+            /* Gradientes de Ação */
+            --gradient-cta: linear-gradient(135deg, #00f0ff 0%, #00ff88 100%);
+            --gradient-cta-text: #05131a;
+            --gradient-game: linear-gradient(135deg, #7928ca 0%, #ff0080 100%);
+            --gradient-card-border: linear-gradient(135deg, rgba(0, 240, 255, 0.3), rgba(157, 78, 221, 0.2));
+
+            /* Tipografia */
+            --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+            /* Cores de Texto */
+            --text-primary: #ffffff;
+            --text-secondary: #a0aec0;
+            --text-muted: #718096;
+        }
+
+        /* Reset Universal & Base Mobile-First */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            font-size: 16px;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(0, 240, 255, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 100% 50%, rgba(157, 78, 221, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 0% 80%, rgba(0, 255, 136, 0.08) 0%, transparent 40%);
+            background-attachment: fixed;
+            line-height: 1.5;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Efeitos Luminosos de Fundo (Ambiente Gamer) */
+        .ambient-glow {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.35;
+        }
+
+        .glow-cyan {
+            top: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, var(--neon-cyan) 0%, transparent 70%);
+        }
+
+        .glow-purple {
+            top: 35%;
+            right: -100px;
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle, var(--neon-purple) 0%, transparent 70%);
+        }
+
+        .glow-green {
+            bottom: 5%;
+            left: -80px;
+            width: 240px;
+            height: 240px;
+            background: radial-gradient(circle, var(--neon-green) 0%, transparent 70%);
+        }
+
+        /* Container Principal — Otimizado para Smartphones */
+        .container {
+            width: 100%;
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 24px 16px 40px;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* 1. Header do Perfil */
+        .profile-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 8px 0 6px;
+            gap: 12px;
+        }
+
+        .avatar-wrapper {
+            position: relative;
+            width: 104px;
+            height: 104px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .avatar-ring {
+            position: absolute;
+            inset: -3px;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, var(--neon-cyan), var(--neon-green), var(--neon-cyan));
+            animation: rotateRing 8s linear infinite;
+            filter: blur(2px);
+            opacity: 0.85;
+        }
+
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            position: relative;
+            z-index: 2;
+            background: #121624;
+            border: 2px solid rgba(0, 240, 255, 0.4);
+            box-shadow: 0 0 24px rgba(0, 240, 255, 0.45);
+        }
+
+        .live-dot {
+            position: absolute;
+            bottom: 4px;
+            right: 6px;
+            width: 16px;
+            height: 16px;
+            background-color: var(--neon-green);
+            border: 3px solid #0d0f17;
+            border-radius: 50%;
+            z-index: 3;
+            box-shadow: 0 0 10px var(--neon-green);
+        }
+
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .verified-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--neon-green);
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid rgba(0, 255, 136, 0.25);
+            padding: 3px 12px;
+            border-radius: 100px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-indicator {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--neon-green);
+            box-shadow: 0 0 6px var(--neon-green);
+            animation: blinkStatus 1.8s infinite;
+        }
+
+        .profile-name {
+            font-family: var(--font-heading);
+            font-size: 1.75rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+            text-shadow: 0 0 20px rgba(0, 240, 255, 0.35);
+            margin-top: 2px;
+        }
+
+        .profile-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* 2. Cards Glassmorphism */
+        .offer-card {
+            position: relative;
+            background: var(--bg-card);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-radius: 20px;
+            padding: 22px 18px;
+            border: 1px solid var(--border-card);
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+            overflow: hidden;
+        }
+
+        .offer-card:hover {
+            border-color: var(--border-card-hover);
+            box-shadow: 0 16px 42px rgba(0, 240, 255, 0.18);
+        }
+
+        .main-offer {
+            border-color: rgba(0, 240, 255, 0.4);
+            background: linear-gradient(165deg, rgba(26, 33, 56, 0.85) 0%, rgba(16, 20, 34, 0.9) 100%);
+            box-shadow: 0 12px 40px rgba(0, 240, 255, 0.15), 0 0 0 1px rgba(0, 240, 255, 0.2);
+        }
+
+        .main-offer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-green), var(--neon-cyan));
+            box-shadow: 0 0 12px var(--neon-cyan);
+        }
+
+        .card-badge-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .badge-exclusive {
+            background: rgba(0, 240, 255, 0.14);
+            border: 1px solid rgba(0, 240, 255, 0.4);
+            color: var(--neon-cyan);
+            text-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
+        }
+
+        .badge-stock {
+            background: rgba(255, 190, 11, 0.12);
+            border: 1px solid rgba(255, 190, 11, 0.3);
+            color: var(--neon-gold);
+            font-size: 0.68rem;
+        }
+
+        .badge-tournament {
+            background: rgba(157, 78, 221, 0.18);
+            border: 1px solid rgba(157, 78, 221, 0.45);
+            color: #c77dff;
+            text-shadow: 0 0 10px rgba(157, 78, 221, 0.5);
+        }
+
+        .card-title {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.3;
+            margin-bottom: 8px;
+        }
+
+        .card-description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.45;
+            margin-bottom: 16px;
+        }
+
+        .card-description strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .benefit-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .benefit-list li {
+            font-size: 0.85rem;
+            color: #d1d5db;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .check-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: rgba(0, 255, 136, 0.18);
+            color: var(--neon-green);
+            font-size: 0.75rem;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        /* 3. Botões de Ação & Animações */
+        .cta-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 16px 20px;
+            border-radius: 14px;
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 800;
+            text-decoration: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.15s ease, filter 0.2s ease, box-shadow 0.2s ease;
+            text-align: center;
+            user-select: none;
+        }
+
+        .cta-button:active {
+            transform: scale(0.97);
+        }
+
+        .cta-primary {
+            background: var(--gradient-cta);
+            color: var(--gradient-cta-text);
+            box-shadow: 0 6px 24px rgba(0, 240, 255, 0.35), 0 2px 6px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.3px;
+        }
+
+        .cta-primary:hover {
+            filter: brightness(1.08);
+            box-shadow: 0 8px 30px rgba(0, 255, 136, 0.5);
+        }
+
+        .pulse-cta {
+            animation: pulseCtaGlow 2.4s infinite ease-in-out;
+        }
+
+        .btn-shimmer {
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 80%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+            transform: skewX(-25deg);
+            animation: shimmerSlide 3.5s infinite;
+            pointer-events: none;
+        }
+
+        .btn-icon {
+            font-size: 1.15rem;
+            line-height: 1;
+        }
+
+        .security-microcopy {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 12px;
+            font-size: 0.74rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .free-game-card {
+            border-color: rgba(157, 78, 221, 0.25);
+            background: linear-gradient(165deg, rgba(28, 20, 48, 0.75) 0%, rgba(16, 20, 34, 0.8) 100%);
+        }
+
+        .free-game-card:hover {
+            border-color: rgba(157, 78, 221, 0.55);
+        }
+
+        .cta-game {
+            background: linear-gradient(135deg, #8a2be2 0%, #4a00e0 100%);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 6px 20px rgba(138, 43, 226, 0.35);
+        }
+
+        .cta-game:hover {
+            box-shadow: 0 8px 26px rgba(138, 43, 226, 0.55);
+            filter: brightness(1.1);
+        }
+
+        .contact-card {
+            padding: 10px;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+        }
+
+        .cta-secondary {
+            background: rgba(22, 28, 46, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            color: #e2e8f0;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            font-size: 0.95rem;
+            font-weight: 600;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+        }
+
+        .cta-secondary:hover {
+            background: rgba(30, 38, 64, 0.95);
+            border-color: rgba(0, 240, 255, 0.3);
+            color: #ffffff;
+        }
+
+        /* 4. Selos de Confiança */
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            padding: 8px 0;
+        }
+
+        .trust-item {
+            background: rgba(18, 23, 38, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 10px 6px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 4px;
+        }
+
+        .trust-icon {
+            font-size: 1.1rem;
+        }
+
+        .trust-text {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            line-height: 1.2;
+        }
+
+        /* 5. Footer */
+        .page-footer {
+            text-align: center;
+            padding: 10px 12px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer-guarantee {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #d1d5db;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .footer-copyright {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+        }
+
+        /* 6. Animações Keyframes */
+        @keyframes pulseCtaGlow {
+            0%, 100% {
+                box-shadow: 0 6px 24px rgba(0, 240, 255, 0.35), 0 0 0 0 rgba(0, 240, 255, 0.5);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 10px 36px rgba(0, 255, 136, 0.6), 0 0 0 8px rgba(0, 240, 255, 0);
+                transform: scale(1.02);
+            }
+        }
+
+        @keyframes shimmerSlide {
+            0% {
+                left: -120%;
+            }
+            30%, 100% {
+                left: 140%;
+            }
+        }
+
+        @keyframes rotateRing {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes blinkStatus {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.4;
+                transform: scale(0.85);
+            }
+        }
+
+        @media (max-width: 360px) {
+            .container {
+                padding: 18px 12px 30px;
+            }
+            .profile-name {
+                font-size: 1.5rem;
+            }
+            .cta-button {
+                padding: 14px 14px;
+                font-size: 0.9rem;
+            }
+            .trust-grid {
+                grid-template-columns: 1fr;
+                gap: 6px;
+            }
+            .trust-item {
+                flex-direction: row;
+                justify-content: center;
+                gap: 8px;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -42,8 +612,14 @@
         <header class="profile-header">
             <div class="avatar-wrapper">
                 <div class="avatar-ring"></div>
-                <!-- Logo Anexada Centralizada -->
-                <img src="assets/logo.png" alt="Play de Bolso Logo" class="profile-avatar" width="100" height="100" fetchpriority="high">
+                <!-- Logo Centralizada com fallback automático para qualquer rota -->
+                <img src="assets/logo.png" 
+                     onerror="if(!this.src.includes('frameincrivel')) this.src='frameincrivel/assets/logo.png'" 
+                     alt="Frame Incrível Logo" 
+                     class="profile-avatar" 
+                     width="100" 
+                     height="100" 
+                     fetchpriority="high">
                 <span class="live-dot" title="Online Agora"></span>
             </div>
 
@@ -51,7 +627,7 @@
                 <div class="verified-badge">
                     <span class="status-indicator"></span> Atendimento Online Agora
                 </div>
-                <h1 class="profile-name">Play de Bolso</h1>
+                <h1 class="profile-name">Frame Incrível</h1>
                 <p class="profile-subtitle">Seu console portátil no celular 🎮</p>
             </div>
         </header>
@@ -176,7 +752,7 @@
                 🔒 Ativação rápida e suporte humanizado via WhatsApp.
             </p>
             <p class="footer-copyright">
-                &copy; 2026 Play de Bolso • Todos os direitos reservados.
+                &copy; 2026 Frame Incrível • Todos os direitos reservados.
             </p>
         </footer>
 
