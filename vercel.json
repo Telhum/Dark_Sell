@@ -1,22 +1,3 @@
 {
-  "version": 2,
-  "cleanUrls": true,
-  "rewrites": [
-    {
-      "source": "/",
-      "destination": "/frameincrivel/index.html"
-    },
-    {
-      "source": "/frameincrivel",
-      "destination": "/frameincrivel/index.html"
-    },
-    {
-      "source": "/assets/(.*)",
-      "destination": "/frameincrivel/assets/$1"
-    },
-    {
-      "source": "/frameincrivel/assets/(.*)",
-      "destination": "/frameincrivel/assets/$1"
-    }
-  ]
+  "cleanUrls": true
 }
